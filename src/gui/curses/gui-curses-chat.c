@@ -1492,6 +1492,11 @@ gui_chat_display_line (struct t_gui_window *window, struct t_gui_line *line,
                     /* jump to start of word */
                     ptr_data += word_start_offset;
                 }
+                else if (window->win_chat_cursor_x == 0)
+                {
+                    /// Add one prefix space to continuous line so that we have a proper word separator for url hinting.
+                    ptr_data--;
+                }
 
                 /* display word */
                 gui_chat_display_word (window, line, ptr_data,
